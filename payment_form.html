@@ -1,0 +1,46 @@
+<html>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.18.0/js/md5.min.js"></script>
+
+<form id="paymentForm" method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">
+    <input id="signature" name="signature" type="hidden">
+    <input name="apiKey" type="hidden" value="4Vj8eK4rloUd272L48hsrarnUA">
+    <input name="merchantId" type="hidden" value="508029">
+    <input name="accountId" type="hidden" value="512321">
+    <input id="amount" name="amount" type="hidden" value="20000">
+    <input name="tax" type="hidden" value="3193">
+    <input name="taxReturnBase" type="hidden" value="16806">
+    <input name="currency" type="hidden" value="COP">
+    <input id="description" name="description" type="hidden" value="Test PAYU">
+    <input id="referenceCode" name="referenceCode" type="hidden" value="TestPayU">
+    <input name="buyerEmail" type="hidden" value="test@test.com">
+    <input name="responseUrl" type="hidden" value="file:///android_asset/payment.html">
+    <input name="test"            type="hidden"  value="1" >
+
+    <input name="Submit" type="submit" value="Enviar">
+</form>
+
+<script>
+    const form = document.getElementById("paymentForm");
+
+    form.addEventListener("submit", function() {
+        const signatureString = form.elements["apiKey"].value + "~" +
+                              form.elements["merchantId"].value + "~" +
+                              form.elements["referenceCode"].value + "~" +
+                              form.elements["amount"].value + "~" +
+                              form.elements["currency"].value;
+
+        const signature = md5(signatureString);
+        this.signature.value = signature;
+    });
+
+    function setFormValues(amountValue, descriptionValue, referenceCodeValue, buyerEmailValue) {
+        form.elements["amount"].value = amountValue;
+        form.elements["description"].value = descriptionValue;
+        form.elements["referenceCode"].value = referenceCodeValue;
+        form.elements["buyerEmail"].value = buyerEmailValue;
+    }
+</script>
+</body>
+</html>
+

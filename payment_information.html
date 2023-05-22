@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        td span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Payment Information</h1>
+
+    <table>
+        <tr>
+            <th>Field</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>Merchant ID</td>
+            <td><span id="merchantId"></span></td>
+        </tr>
+        <tr>
+            <td>Merchant Name</td>
+            <td><span id="merchantName"></span></td>
+        </tr>
+        <tr>
+            <td>Merchant Address</td>
+            <td><span id="merchantAddress"></span></td>
+        </tr>
+        <tr>
+            <td>Telephone</td>
+            <td><span id="telephone"></span></td>
+        </tr>
+        <tr>
+            <td>Merchant URL</td>
+            <td><span id="merchantUrl"></span></td>
+        </tr>
+        <tr>
+            <td>Transaction State</td>
+            <td><span id="transactionState"></span></td>
+        </tr>
+        <tr>
+            <td>LAP Transaction State</td>
+            <td><span id="lapTransactionState"></span></td>
+        </tr>
+        <tr>
+            <td>Message</td>
+            <td><span id="message"></span></td>
+        </tr>
+        <tr>
+            <td>Reference Code</td>
+            <td><span id="referenceCode"></span></td>
+        </tr>
+        <tr>
+            <td>Reference POL</td>
+            <td><span id="referencePol"></span></td>
+        </tr>
+        <tr>
+            <td>Transaction ID</td>
+            <td><span id="transactionId"></span></td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td><span id="description"></span></td>
+        </tr>
+        <tr>
+            <td>Trazability Code</td>
+            <td><span id="trazabilityCode"></span></td>
+        </tr>
+        <tr>
+            <td>CUS</td>
+            <td><span id="cus"></span></td>
+        </tr>
+        <tr>
+            <td>Order Language</td>
+            <td><span id="orderLanguage"></span></td>
+        </tr>
+        <tr>
+            <td>Buyer Email</td>
+            <td><span id="buyerEmail"></span></td>
+        </tr>
+        <tr>
+            <td>POL Payment Method</td>
+            <td><span id="polPaymentMethod"></span></td>
+        </tr>
+        <tr>
+            <td>LAP Payment Method</td>
+            <td><span id="lapPaymentMethod"></span></td>
+        </tr>
+        <tr>
+            <td>Installments Number</td>
+            <td><span id="installmentsNumber"></span></td>
+        </tr>
+        <tr>
+            <td>TX VALUE</td>
+            <td><span id="TX_VALUE"></span></td>
+        </tr>
+        <tr>
+            <td>TX TAX</td>
+            <td><span id="TX_TAX"></span></td>
+        </tr>
+        <tr>
+            <td>Currency</td>
+            <td><span id="currency"></span></td>
+        </tr>
+        <tr>
+            <td>Processing Date</td>
+            <td><span id="processingDate"></span></td>
+        </tr>
+    </table>
+
+    <script>
+        function getParameterByName(name) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(window.location.href);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        function displayPaymentInfo() {
+            var merchantId = getParameterByName('merchantId');
+            var merchantName = getParameterByName('merchant_name');
+            var merchantAddress = getParameterByName('merchant_address');
+            var telephone = getParameterByName('telephone');
+            var merchantUrl = getParameterByName('merchant_url');
+            var transactionState = getParameterByName('transactionState');
+            var lapTransactionState = getParameterByName('lapTransactionState');
+            var message = getParameterByName('message');
+            var referenceCode = getParameterByName('referenceCode');
+            var referencePol = getParameterByName('reference_pol');
+            var transactionId = getParameterByName('transactionId');
+            var description = getParameterByName('description');
+            var trazabilityCode = getParameterByName('trazabilityCode');
+            var cus = getParameterByName('cus');
+            var orderLanguage = getParameterByName('orderLanguage');
+            var buyerEmail = getParameterByName('buyerEmail');
+            var polPaymentMethod = getParameterByName('polPaymentMethod');
+            var lapPaymentMethod = getParameterByName('lapPaymentMethod');
+            var installmentsNumber = getParameterByName('installmentsNumber');
+            var TX_VALUE = getParameterByName('TX_VALUE');
+            var TX_TAX = getParameterByName('TX_TAX');
+            var currency = getParameterByName('currency');
+            var processingDate = getParameterByName('processingDate');
+
+            document.getElementById('merchantId').textContent = merchantId;
+            document.getElementById('merchantName').textContent = merchantName;
+            document.getElementById('merchantAddress').textContent = merchantAddress;
+            document.getElementById('telephone').textContent = telephone;
+            document.getElementById('merchantUrl').textContent = merchantUrl;
+            document.getElementById('transactionState').textContent = transactionState;
+            document.getElementById('lapTransactionState').textContent = lapTransactionState;
+            document.getElementById('message').textContent = message;
+            document.getElementById('referenceCode').textContent = referenceCode;
+            document.getElementById('referencePol').textContent = referencePol;
+            document.getElementById('transactionId').textContent = transactionId;
+            document.getElementById('description').textContent = description;
+            document.getElementById('trazabilityCode').textContent = trazabilityCode;
+            document.getElementById('cus').textContent = cus;
+            document.getElementById('orderLanguage').textContent = orderLanguage;
+            document.getElementById('buyerEmail').textContent = buyerEmail;
+            document.getElementById('polPaymentMethod').textContent = polPaymentMethod;
+            document.getElementById('lapPaymentMethod').textContent = lapPaymentMethod;
+            document.getElementById('installmentsNumber').textContent = installmentsNumber;
+            document.getElementById('TX_VALUE').textContent = TX_VALUE;
+            document.getElementById('TX_TAX').textContent = TX_TAX;
+            document.getElementById('currency').textContent = currency;
+            document.getElementById('processingDate').textContent = processingDate;
+        }
+
+        displayPaymentInfo();
+    </script>
+</body>
+</html>
