@@ -40,12 +40,19 @@
         input[readonly] {
             background-color: #f5f5f5;
         }
+
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/blueimp-md5/2.18.0/js/md5.min.js"></script>
 
 </head>
 
 <body>
+    <div class="container">
     <form id="paymentForm" method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">
         <input id="signature" name="signature" type="hidden">
         <input name="apiKey" type="hidden" value="4Vj8eK4rloUd272L48hsrarnUA">
@@ -57,21 +64,18 @@
         <input name="currency" type="hidden" value="COP">
         <input id="description" name="description" type="hidden" value="Test PAYU">
         <input id="referenceCode" name="referenceCode" type="hidden" value="TestPayUa">
-        <label for="buyerEmail">Buyer Email:</label>
-        <input id="buyerEmail" name="buyerEmail" type="text" value="test@test.com">
-        <label for="amountLabel">Amount:</label>
-        <label id="amountLabel">0</label>
+        <input id="buyerEmail" name="buyerEmail" type="hidden" value="test@test.com">
         <input name="responseUrl" type="hidden"
             value="https://mobile-apps-projects.github.io/payment_pages/payment_information">
         <input name="test" type="hidden" value="1">
-        <input name="Submit" type="submit" value="Enviar">
+        <input name="Submit" type="submit" value="Pagar">
     </form>
+</div>
 
     <script>
         const form = document.getElementById("paymentForm");
         const buyerEmailInput = document.getElementById("buyerEmail");
         const amountInput = document.getElementById("amount");
-        const amountLabel = document.getElementById("amountLabel");
 
         form.addEventListener("submit", function (event) {
             event.preventDefault();
@@ -94,13 +98,7 @@
             form.elements["description"].value = descriptionValue;
             form.elements["referenceCode"].value = referenceCodeValue;
             form.elements["buyerEmail"].value = buyerEmailValue;
-            amountLabel.textContent = amountValue;
-
         }
-
-        buyerEmailInput.addEventListener("input", function () {
-            form.elements["buyerEmail"].value = buyerEmailInput.value;
-        });
 
 
     </script>
